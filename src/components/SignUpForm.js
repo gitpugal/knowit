@@ -40,7 +40,7 @@ const SignUpForm = () => {
         if(alertText.length == 0){
             axios.get(`https://job-site-backend.vercel.app/${userForm.email}`)
             .then(res => {
-                if(res == null){
+                if(res.data == null){
                     axios.post("https://job-site-backend.vercel.app/signup", {
                 username : userForm.username,
                 email: userForm.email,
