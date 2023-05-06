@@ -39,11 +39,11 @@ app.post("/signup", (req,res) => {
         .catch(err => res.status(400).json('Error: '+err))
 })
 
-app.get("/", (req, res) => {
-    User.find()
-        .then(notes => res.json(notes))
-        .catch(err => res.status(400).json('Error: '+err))
-})
+// app.get("/", (req, res) => {
+//     User.find()
+//         .then(notes => res.json(notes))
+//         .catch(err => res.status(400).json('Error: '+err))
+// })
 
 
 app.get("/:email", (req, res) => {
