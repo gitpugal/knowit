@@ -26,7 +26,7 @@ const Welcome = () => {
   })
   const navigate = useNavigate();
     useEffect(() => {
-        axios.get(`https://intern-a1.vercel.app/${location.state?.email}`)
+        axios.get(`https://job-site-backend.vercel.app/${location.state?.email}`)
             .then(res => setCurrentUser(res.data))
             .catch(err => console.log(err))
     }, [])
@@ -55,7 +55,7 @@ const Welcome = () => {
       alertText.length > 0 && alert(alertText);
 
       if(alertText.length == 0){
-          axios.post("https://intern-a1.vercel.app/signup", {
+          axios.post("https://job-site-backend.vercel.app/signup", {
               username : userForm.username,
               email: userForm.email,
               password: userForm.password,
@@ -181,7 +181,7 @@ const Welcome = () => {
     function uploadResume(e){
       e.preventDefault();
 
-      axios.put(`https://intern-a1.vercel.app/${cuurentUser.email}`, {
+      axios.put(`https://job-site-backend.vercel.app/${cuurentUser.email}`, {
               resume: response.url,
           })
           .then(res => setCurrentUser(res.data))
