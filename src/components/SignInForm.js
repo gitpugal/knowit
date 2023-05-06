@@ -47,7 +47,7 @@ function signInHandler(e){
             <input type="email"  className='bg-white bg-opacity-20 rounded-xl px-2 h-10' name="email" id="" value={userForm.email} onChange={changeHanlder}/><br />
             <label htmlFor="">Password</label><br />
             <input type="text" className='bg-white bg-opacity-20 rounded-xl px-2 h-10' name="password" id="" value={userForm.password} onChange={changeHanlder}/><br />
-            <input type="submit" name="" id="" className='bg-teal-600 p-2 rounded-lg mt-4' value="login"/><br />
+            <input type="submit" name="" id="" className='bg-teal-600 p-2 rounded-lg mt-4 cursor-pointer' value="login"/><br />
             <Link to="/signup" className="underline text-xs top-2">Don't have an account signUp?</Link>
         </form>
     </div>
