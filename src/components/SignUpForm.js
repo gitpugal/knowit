@@ -100,7 +100,7 @@ const SignUpForm = () => {
                 <option value="selfemployed">selfemployed</option>
                 <option value="other">other</option>
             </select><br />
-            <input type="submit" name="" id=""  className='bg-teal-400 p-2 rounded-lg mt-2'/>
+            <input type="submit" name="" id=""  className='cursor-pointer bg-teal-400 p-2 rounded-lg mt-2'/>
         </form>
     </div>
   )
