@@ -26,7 +26,7 @@ const Welcome = () => {
   })
   const navigate = useNavigate();
     useEffect(() => {
-        axios.get(`http://localhost:5000/${location.state?.email}`)
+        axios.get(`https://intern-a1.vercel.app/${location.state?.email}`)
             .then(res => setCurrentUser(res.data))
             .catch(err => console.log(err))
     }, [])
@@ -55,7 +55,7 @@ const Welcome = () => {
       alertText.length > 0 && alert(alertText);
 
       if(alertText.length == 0){
-          axios.post("http://localhost:5000/signup", {
+          axios.post("https://intern-a1.vercel.app/signup", {
               username : userForm.username,
               email: userForm.email,
               password: userForm.password,
@@ -181,7 +181,7 @@ const Welcome = () => {
     function uploadResume(e){
       e.preventDefault();
 
-      axios.put(`http://localhost:5000/${cuurentUser.email}`, {
+      axios.put(`https://intern-a1.vercel.app/${cuurentUser.email}`, {
               resume: response.url,
           })
           .then(res => setCurrentUser(res.data))

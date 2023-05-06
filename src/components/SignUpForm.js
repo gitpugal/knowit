@@ -38,10 +38,10 @@ const SignUpForm = () => {
         alertText.length > 0 && alert(alertText);
 
         if(alertText.length == 0){
-            axios.get(`http://localhost:5000/${userForm.email}`)
+            axios.get(`https://intern-a1.vercel.app/${userForm.email}`)
             .then(res => {
                 if(res == null){
-                    axios.post("http://localhost:5000/signup", {
+                    axios.post("https://intern-a1.vercel.app/signup", {
                 username : userForm.username,
                 email: userForm.email,
                 password: userForm.password,
