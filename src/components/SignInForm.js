@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {  TailSpin } from 'react-loader-spinner';
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -8,6 +9,8 @@ const SignInForm = () => {
     email: "",
     password: ""
   })
+
+  const [isLoading, setIsLoading] = useState(false);
 
   function changeHanlder(e){
     e.preventDefault();
@@ -19,6 +22,7 @@ const SignInForm = () => {
 
 function signInHandler(e){
   e.preventDefault();
+  setIsLoading(true);
   axios.get(`https://job-site-backend.vercel.app/${userForm.email}`)
             .then(res => {
               if(res.data == null){
@@ -34,6 +38,10 @@ function signInHandler(e){
               }
             })
             .catch(err => console.log(err))
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 4000)
+
 }
 
 
@@ -47,7 +55,16 @@ function signInHandler(e){
             <input type="email"  className='bg-white bg-opacity-20 rounded-xl px-2 h-10' name="email" id="" value={userForm.email} onChange={changeHanlder}/><br />
             <label htmlFor="">Password</label><br />
             <input type="text" className='bg-white bg-opacity-20 rounded-xl px-2 h-10' name="password" id="" value={userForm.password} onChange={changeHanlder}/><br />
-            <input type="submit" name="" id="" className='bg-teal-600 p-2 rounded-lg mt-4' value="login"/><br />
+            <button className='p-2 rounded-xl bg-gradient-to-r from-teal-400 to-sky-700 mt-8 mb-2 min-w-xl' type="submit">{isLoading ? <TailSpin
+  height="20"
+  width="20"
+  color="#4fa94d"
+  ariaLabel="tail-spin-loading"
+  radius="6"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/> : "Login"}</button><br />
             <Link to="/signup" className="underline text-xs top-2">Don't have an account signUp?</Link>
         </form>
     </div>

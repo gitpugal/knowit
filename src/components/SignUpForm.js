@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import Welcome from './Welcome';
+import { TailSpin } from 'react-loader-spinner';
 const SignUpForm = () => {
     const [userForm, setUserForm] = useState({
         username : "",
@@ -13,6 +14,7 @@ const SignUpForm = () => {
         status: "",
         resume: ""
     })
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -35,9 +37,10 @@ const SignUpForm = () => {
             alertText += "Kindly select a status \n";
         }
 
-        alertText.length > 0 && alert(alertText);
-
-        if(alertText.length == 0){
+        if(alertText.length > 0){
+            alert(alertText)
+        } else{
+            setIsLoading(true);
             axios.get(`https://job-site-backend.vercel.app/${userForm.email}`)
             .then(res => {
                 if(res.data == null){
@@ -58,8 +61,7 @@ const SignUpForm = () => {
             }
         })
             .catch(err => console.log(err))
-            
-
+            setTimeout(() => setIsLoading(false), 4000)
             
         }
     }
@@ -100,7 +102,16 @@ const SignUpForm = () => {
                 <option value="selfemployed">selfemployed</option>
                 <option value="other">other</option>
             </select><br />
-            <input type="submit" name="" id=""  className='bg-teal-400 p-2 rounded-lg mt-2'/>
+            <button className='p-2 rounded-xl bg-gradient-to-r from-teal-400 to-sky-700 mt-8 mb-2 min-w-xl' type="submit">{isLoading ? <TailSpin
+  height="20"
+  width="20"
+  color="#4fa94d"
+  ariaLabel="tail-spin-loading"
+  radius="6"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/> : "SignUp"}</button><br />
         </form>
     </div>
   )
