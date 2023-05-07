@@ -288,7 +288,7 @@ const Welcome = () => {
             <input type="file" id="form" className='bg-white bg-opacity-20 w-full p-2 rounded-xs' onChange={processFile} />
             <button className='bg-teal-400 p-3 rounded-xl m-2' onClick={uploadResume}>Upload resume</button>
             <p className='my-10'>{isUploading && "uploading your resume.... "}</p>
-            <input type="submit" name="" id=""  className='bg-teal-400 p-2 rounded-lg mt-2'/>
+//             <input type="submit" name="" id=""  className='bg-teal-400 p-2 rounded-lg mt-2'/>
         </form>
     </div>
          </div>
